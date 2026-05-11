@@ -3,6 +3,16 @@ kind: Application
 metadata:
   name: wordpress-org1
   namespace: argocd
+  
+  annotations:
+  # ✅ Sync success → Slack channel
+  notifications.argoproj.io/subscribe.on-sync-succeeded.slack: wordpress-org1
+
+  # 🚨 Sync failure → alerts channel (recommended)
+  notifications.argoproj.io/subscribe.on-sync-failed.slack: wordpress-alerts
+
+  # ⚠️ Optional: health degraded alerts
+  notifications.argoproj.io/subscribe.on-health-degraded.slack: wordpress-alerts
 
 spec:
   project: wordpress-org1
