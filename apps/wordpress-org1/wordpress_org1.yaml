@@ -3,30 +3,27 @@ kind: Application
 metadata:
   name: wordpress-org1
   namespace: argocd
-  
+
   annotations:
-  # ✅ Sync success → Slack channel
-  notifications.argoproj.io/subscribe.on-sync-succeeded.slack: Darren Samuels
+    #################################################################
+    # WORKING SUBSCRIPTIONS (MATCH CONFIGMAP TRIGGERS)
+    #################################################################
 
-  # 🚨 Sync failure → alerts channel (recommended)
-  notifications.argoproj.io/subscribe.on-sync-failed.slack: Darren Samuels
-
-  # ⚠️ Optional: health degraded alerts
-  notifications.argoproj.io/subscribe.on-health-degraded.slack: Darren Samuels
+    notifications.argoproj.io/subscribe.on-deployed.slack: Darren Samuels
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: Darren Samuels
+    notifications.argoproj.io/subscribe.on-sync-status-change.slack: Darren Samuels
 
 spec:
   project: wordpress-org1
 
   sources:
-    # 1. Helm chart
     - repoURL: registry-1.docker.io/bitnamicharts
       chart: wordpress
       targetRevision: 30.0.4
       helm:
         valueFiles:
           - $values/apps/wordpress-org1/values.yaml
-  
-    # 2. Values repo (keep ref!)
+
     - repoURL: https://github.com/el7-7/poc-gitops-testsite.git
       targetRevision: main
       ref: values
@@ -41,7 +38,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-    hooks:
-      - sync:
-          # Runs AFTER successful sync
-          hook: PostSync
