@@ -9,9 +9,9 @@ metadata:
     # WORKING SUBSCRIPTIONS (MATCH CONFIGMAP TRIGGERS)
     #################################################################
 
-    notifications.argoproj.io/subscribe.on-deployed.slack: Darren Samuels
-    notifications.argoproj.io/subscribe.on-sync-failed.slack: Darren Samuels
-    notifications.argoproj.io/subscribe.on-sync-status-change.slack: Darren Samuels
+    notifications.argoproj.io/subscribe.on-deployed.slack: argocd-notifications
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: argocd-notifications
+    notifications.argoproj.io/subscribe.on-sync-status-change.slack: argocd-notifications
 
 spec:
   project: wordpress-org1
