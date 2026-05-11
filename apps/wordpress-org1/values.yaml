@@ -12,10 +12,10 @@ service:
 
 ingress:
   enabled: true
-  ingressClassName: ingress-nginx
+  ingressClassName: nginx
   hostname: argo.test.com
   annotations:
-    kubernetes.io/ingress.class: ingress-nginx
+    kubernetes.io/ingress.class: nginx
 
 # ✔ keep DB managed by Helm
 mariadb:
