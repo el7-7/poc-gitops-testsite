@@ -14,7 +14,7 @@ spec:
       targetRevision: 30.0.4
       helm:
         valueFiles:
-          - $values/apps/org1/org1-prod-values.yaml
+          - $values/apps/worpdress-org2/values.yaml
   
     # 2. Values repo (keep ref!)
     - repoURL: https://github.com/el7-7/argo-demo.git
