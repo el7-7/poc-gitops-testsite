@@ -1,1 +1,18 @@
-
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wordpress-app
+  namespace: argocd
+spec:
+  project: wordpress-org1
+  source:
+    repoURL: https://github.com/el7-7/argo-demo.git
+    targetRevision: HEAD
+    path: argocd/apps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
