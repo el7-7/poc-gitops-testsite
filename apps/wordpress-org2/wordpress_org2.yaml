@@ -1,1 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wordpress-org2
+  namespace: argocd
 
+spec:
+  project: wordpress-org2
+
+  sources:
+    # 1. Helm chart
+    - repoURL: registry-1.docker.io/bitnamicharts
+      chart: wordpress
+      targetRevision: 30.0.4
+      helm:
+        valueFiles:
+          - $values/apps/org1/org1-prod-values.yaml
+  
+    # 2. Values repo (keep ref!)
+    - repoURL: https://github.com/el7-7/argo-demo.git
+      targetRevision: main
+      ref: values
+  
+    # 3. Manifests (hooks etc.)
+    - repoURL: https://github.com/el7-7/argo-demo.git
+      targetRevision: main
+      path: apps/org2
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: org2
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
