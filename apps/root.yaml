@@ -6,9 +6,9 @@ metadata:
 spec:
   project: wordpress-org1
   source:
-    repoURL: https://github.com/el7-7/argo-demo.git
+    repoURL: https://github.com/el7-7/poc-gitops-testsite.git
     targetRevision: HEAD
-    path: argocd/apps
+    path: apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
