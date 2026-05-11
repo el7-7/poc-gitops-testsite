@@ -17,7 +17,7 @@ spec:
           - $values/apps/wordpress-org1/values.yaml
   
     # 2. Values repo (keep ref!)
-    - repoURL: https://github.com/el7-7/argo-demo.git
+    - repoURL: https://github.com/el7-7/poc-gitops-testsite.git
       targetRevision: main
       ref: values
 
