@@ -20,11 +20,6 @@ spec:
     - repoURL: https://github.com/el7-7/argo-demo.git
       targetRevision: main
       ref: values
-  
-    # 3. Manifests (hooks etc.)
-    - repoURL: https://github.com/el7-7/argo-demo.git
-      targetRevision: main
-      path: apps/org1
 
   destination:
     server: https://kubernetes.default.svc
