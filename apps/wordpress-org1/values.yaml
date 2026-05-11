@@ -1,1 +1,22 @@
+wordpressUsername: admin
+wordpressPassword: password123
+wordpressEmail: admin@example.com
+wordpressBlogName: "My GitOps WordPress"
+wordpressBlogDescription: "Running with Argo CD"
 
+# 🚨 IMPORTANT: disable Deployment from Helm
+replicaCount: 1
+
+service:
+  type: ClusterIP
+
+ingress:
+  enabled: true
+  ingressClassName: ingress-nginx
+  hostname: argo.test.com
+  annotations:
+    kubernetes.io/ingress.class: ingress-nginx
+
+# ✔ keep DB managed by Helm
+mariadb:
+  enabled: true
