@@ -7,8 +7,10 @@ spec:
   project: wordpress-org1
   source:
     repoURL: https://github.com/el7-7/poc-gitops-testsite.git
-    targetRevision: HEAD
-    path: apps/wordpress-org1
+    path: apps
+    targetRevision: main
+    directory:
+      recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
