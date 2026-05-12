@@ -5,10 +5,11 @@ metadata:
   namespace: argocd
 
   annotations:
-    notifications.argoproj.io/subscribe.on-sync-running.slack: argocd-notifications
-    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: argocd-notifications
-    notifications.argoproj.io/subscribe.on-sync-failed.slack: argocd-notifications
-    notifications.argoproj.io/subscribe.on-sync-cancelled.slack: argocd-notifications
+    notifications.argoproj.io/environment: "org1"
+    notifications.argoproj.io/enabled: "true"
+    notifications.argoproj.io/subscribe.on-sync-running.slack: "argocd-notifications"
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: "argocd-notifications"
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: "argocd-notifications"
 
 spec:
   project: wordpress-org1
