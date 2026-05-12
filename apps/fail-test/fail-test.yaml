@@ -12,18 +12,10 @@ spec:
   project: default
   source:
     repoURL: https://github.com/el7-7/poc-gitops-testsite.git
-    targetRevision: main
-    path: apps/fail-test
+    targetRevision: HEAD
+    path: apps/test
   destination:
     server: https://kubernetes.default.svc
-    namespace: org1
+    namespace: argocd-deploycancel-test
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-  template:
-    metadata:
-      annotations:
-        image.tag: "{{ .Values.image.tag }}"
+    automated: {}
