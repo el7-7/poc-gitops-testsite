@@ -4,7 +4,7 @@ metadata:
   name: test-app
   namespace: org1
 spec:
-  replicas: NaN
+  replicas: 1
   selector:
     matchLabels:
       app: test-app
