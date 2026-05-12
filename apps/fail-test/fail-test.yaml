@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/el7-7/poc-gitops-testsite.git
     targetRevision: HEAD
-    path: apps/test
+    path: apps/fail-test
   destination:
     server: https://kubernetes.default.svc
     namespace: org1
