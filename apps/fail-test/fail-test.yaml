@@ -10,12 +10,22 @@ metadata:
     notifications.argoproj.io/subscribe.on-sync-cancelled.slack: argocd-notifications
 spec:
   project: default
+
   source:
-    repoURL: https://github.com/el7-7/poc-gitops-testsite.git
-    targetRevision: HEAD
-    path: apps/fail-test
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: nginx
+    targetRevision: 15.14.0
+    helm:
+      valueFiles:
+        - values.yaml
+
   destination:
     server: https://kubernetes.default.svc
-    namespace: org1
+    namespace: nginx-slow
+
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
