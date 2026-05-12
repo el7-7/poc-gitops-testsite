@@ -35,3 +35,8 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+
+  template:
+    metadata:
+      annotations:
+        image.tag: "{{ .Values.image.tag }}"
